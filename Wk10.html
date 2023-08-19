@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week10Website</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<!--background image-->
+<style>
+    body {
+        background: url('https://images.pexels.com/photos/2847648/pexels-photo-2847648.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center fixed;
+        background-size: cover;
+    }  
+</style>
+
+<body>
+    
+    <div class="container mt-5">
+        <h2>Table and Form Example</h2>
+        
+        <!-- Form -->
+        <form id="dataForm" class="mb-3">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input type="number" class="form-control" id="age" required>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="tel" class="form-control" id="phone" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Row</button>
+        </form>
+        
+        <!-- Table -->
+        <table id="dataTable" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Phone Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Table rows will be added dynamically using JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      
+  <!-- Bootstrap & JS  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('dataForm');
+      const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const nameInput = document.getElementById('name');
+        const ageInput = document.getElementById('age');
+        const phoneInput = document.getElementById('phone');
+
+        const newRow = tableBody.insertRow();
+        const cell1 = newRow.insertCell(0);
+        const cell2 = newRow.insertCell(1);
+        const cell3 = newRow.insertCell(2);
+
+        cell1.textContent = nameInput.value;
+        cell2.textContent = ageInput.value;
+        cell3.textContent = phoneInput.value;
+
+        nameInput.value = '';
+        ageInput.value = '';
+        phoneInput.value = '';
+
+      });
+    });
+  </script>
+
+    <script src="node_modules/jquery/dist/jquery.js/bootstrap.bundle.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>   
+    
+</body> 
+</html>
